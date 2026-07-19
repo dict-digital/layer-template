@@ -1,75 +1,78 @@
-# Nuxt Minimal Starter
+# DigiDict Starter with Nuxt
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+## What You Should Do
 
-## Setup
+### Change some Nuxt Configuration
 
-Make sure to install dependencies:
+Here are some example.
 
-```bash
-# npm
-npm install
+```ts
+// https://nuxt.com/docs/api/configuration/nuxt-config
 
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
+export default defineNuxtConfig({
+  compatibilityDate: '2025-07-15',
+  devtools: { enabled: true },
+  extends: ['@digidict/layer-nuxt'],
+  unocss: {
+    nuxtLayers: true
+  },
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: 'ja' // default 'en'
+      }
+    }
+  },
+  site: {
+    url: 'https://physics.hs.dict.digital',
+    name: 'Physics - dict.digital',
+    trailingSlash: true
+  },
+});
 ```
 
-## Development Server
+### Change some App Configuration
 
-Start the development server on `http://localhost:3000`:
+Consider the default values showing above.
 
-```bash
-# npm
-npm run dev
+```ts
+// app/app.config.ts
+export default defineAppConfig({
+  myDict: {
+    theme: {
+      lightColor: '#df841c',
+      darkColor: '#ffd91c'
+    },
+    siteName: 'template - dict.digital',
+    copyRight: '2026 dict.digital',
+    githubLink: 'https://github.com/dict-digital/template',
+    i18n: {
+      search: 'Search',
+      title: 'Title',
+      full_text: 'Full',
+      color_mode: {
+        name: 'Color Mode',
+        system: 'System',
+        light: 'Light',
+        dark: 'Dark'
+      },
+      search_component: {
+        no_result: 'Result not found',
+        searching: 'Searching...',
+        len: {
+          before: 'Showing',
+          after: 'results'
+        },
+        type_to_search: 'Type something to search',
+        all: 'Run full text retrieval'
+      },
+      site_map: 'Sitemap',
+      display_markdown: 'View as Markdown',
+      edit_this_page: 'Edit this page',
+      not_found_title: 'Not Found',
+      not_found_error: 'Still loading or content is not existing.'
+    }
+  }
+});
 
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.

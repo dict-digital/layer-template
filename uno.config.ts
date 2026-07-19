@@ -1,3 +1,3 @@
-import config from './.nuxt/uno.config.mjs'
+import config from './.nuxt/uno.config.mjs';
 
-export default config
+export default config;
