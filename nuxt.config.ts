@@ -4,5 +4,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: [
     '@digidict/layer-nuxt'
-  ]
+  ],
+  unocss: {
+    nuxtLayers: true
+  }
 })
